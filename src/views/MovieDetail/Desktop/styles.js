@@ -5,11 +5,21 @@ const useStyles = makeStyles(theme => ({
     desktop: {
         // color: "#e9e9e9",
         backgroundColor: "rgb(10, 32, 41)",
+        [theme.breakpoints.down(1025)]: {
+            paddingTop: 150
+        },
+        [theme.breakpoints.down(376)]: {
+            paddingTop: 200
+        }
     },
     top: {
         position: "relative",
         height: "41vw",
-        width: "100%"
+        width: "100%",
+        [theme.breakpoints.down(376)]: {
+            height: "100vw",
+            width: "100%",
+        }
     },
     before: {
         position: "absolute",
@@ -31,7 +41,16 @@ const useStyles = makeStyles(theme => ({
         backgroundPosition: "center",
         filter: "blur(15px)",
         margin: "-11px 0 -5px -10px",
-        width: "calc(100% + 5px)"
+        width: "calc(100% + 5px)",
+
+    },
+    detail_img: {
+        width: 250,
+        height: 300,
+        [theme.breakpoints.down(376)]: {
+            width: "100%",
+            marginBottom: 20
+        }
     },
     topInfo: {
         position: "absolute",
@@ -45,20 +64,39 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         justifyContent: "center",
         color: "#e9e9e9",
+        [theme.breakpoints.down(1025)]: {
+            padding: "0 50px"
+        },
+        [theme.breakpoints.down(376)]: {
+            padding: "0 20px",
+            display: "block",
+            height: 620,
+        }
+
     },
     btnTrailer: {
         position: "absolute",
         left: "15%",
         top: "50%",
-        opacity: 0
+        opacity: 0,
+        [theme.breakpoints.down(376)]: {
+            position: "absolute",
+            left: "50%",
+            top: "23%",
+            opacity: 1,
+        }
     },
     imgTrailer: {
         cursor: "pointer",
         '&:hover > div ': { opacity: 1 },
+
     },
     showInfo: {
         width: "59%",
-        padding: "0px 15px"
+        padding: "0px 15px",
+        [theme.breakpoints.down(376)]: {
+            width: "100%",
+        }
     },
     movieName: {
         fontSize: 24
@@ -88,7 +126,8 @@ const useStyles = makeStyles(theme => ({
         color: "#fff",
         "&:hover": {
             backgroundColor: "#b42a14",
-        }
+        },
+
     },
     rating: {
         width: "16%",
@@ -98,6 +137,9 @@ const useStyles = makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        [theme.breakpoints.down(376)]: {
+            display: "none"
+        }
 
     },
     circular: {

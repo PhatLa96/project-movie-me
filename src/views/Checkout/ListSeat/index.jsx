@@ -136,7 +136,7 @@ function ListSeat() {
         <div className={classes.CountDown}>
           <p>Thời gian giữ ghế</p>
           {/* https://www.npmjs.com/package/react-countdown  key để gọi chạy lại khi resetData trên redux*/}
-          {/* <CountDown key={refreshKey} /> */}
+          <CountDown key={refreshKey} />
         </div>
       </div>
 

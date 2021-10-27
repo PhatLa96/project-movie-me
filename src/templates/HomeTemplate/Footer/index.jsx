@@ -12,13 +12,13 @@ function Footer() {
   );
   console.log(arrSystemTheater);
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const classes = useStyles({ isDesktop });
   return (
     <div className={classes.footer}>
       <div className={classes.root}>
         <Grid className={classes.displayInDesktop} container>
-          <Grid item md={4}>
+          <Grid item md={4} >
             <p className={classes.title}>TIX</p>
             <div className="d-flex">
               <div className={classes.text}>

@@ -28,7 +28,7 @@ function Desktop({ arrDetail }) {
             <img
               src={arrDetail.hinhAnh}
               alt="poster"
-              style={{ width: 250, height: 300 }}
+              className={classes.detail_img}
               onError={(e) => {
                 e.target.onerror = null;
               }}

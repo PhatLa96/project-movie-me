@@ -10,7 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import useStyles from "./styles";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { GetDetailShowTime } from "../../../../redux/actions/ManagerTheaterAction/DetailAction";
+import {
+  GetCarouselSearchShowTime,
+  GetDetailShowTime,
+} from "../../../../redux/actions/ManagerTheaterAction/DetailAction";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import formatDate from "../../../../util/fomatDate";
@@ -111,7 +114,7 @@ function SearchBarCarousel() {
       open: { ...data.open, theater: true },
     }));
 
-    dispatch(GetDetailShowTime(movie.maPhim));
+    dispatch(GetCarouselSearchShowTime(movie.maPhim));
   };
   const handleSelectTheater = (event) => {
     const indexSelect = arrCumRapData?.findIndex(

@@ -42,17 +42,6 @@ function TableShowTime({ onClickBtnMuaVe, arrDetail }) {
     idScrollTo: "",
   });
   const classes = useStyles({ hideBtn: commentListDisplay.hideBtn });
-  // const [dataComment,SetDataComment] = useState({
-  //   avtId: currentUser?.taiKhoan,
-  //   username: currentUser?.hoTen,
-  //   point: 2.5,
-  //   post: "",
-  //   likes: 0,
-  //   maPhim: param.maPhim,
-  //   dataTest: false,
-  //   createdAt: "",
-  //   userLikeThisComment: [],
-  // })
 
   const dispatch = useDispatch();
   const handleChange = (event, newValue) => {

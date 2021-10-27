@@ -11,6 +11,9 @@ const useStyles = makeStyles(theme => ({
         paddingTop: "20px",
         paddingBottom: "20px",
         color: "#949494",
+        [theme.breakpoints.down(1025)]: {
+            padding: "20px 20px"
+        }
 
     },
     title: {
@@ -21,7 +24,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     displayInDesktop: {
-        display: props => props.isDesktop ? "block" : "none"
+        display: props => props.isDesktop ? "flex" : "none",
+
     },
     text: {
         width: "45%",
@@ -79,7 +83,7 @@ const useStyles = makeStyles(theme => ({
 
     },
     footer__down: {
-        [theme.breakpoints.down(376)]: {
+        [theme.breakpoints.down(1025)]: {
             padding: "15px 30px"
         }
 
