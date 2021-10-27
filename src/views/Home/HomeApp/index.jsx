@@ -1,3 +1,4 @@
+import { Grid } from "@material-ui/core";
 import React from "react";
 import Slider from "react-slick";
 import useStyles from "./styles";
@@ -18,8 +19,8 @@ export default function HomeApp() {
     <div id="ungdung">
       <div className={classes.mobileApp}>
         <div className={classes.mainMaxWidth}>
-          <div className="row">
-            <div className="col-lg-6 ">
+          <Grid container>
+            <Grid item lg={6} sm={12}>
               <div
                 className={`${classes.mobileApp__left} text-center text-lg-left`}
               >
@@ -66,8 +67,8 @@ export default function HomeApp() {
                   </p>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-6">
+            </Grid>
+            <Grid item lg={6} sm={12}>
               <div className={classes.mobileApp__right}>
                 <img
                   className={classes.bgmobile}
@@ -125,8 +126,8 @@ export default function HomeApp() {
                   </div>
                 </Slider>
               </div>
-            </div>
-          </div>
+            </Grid>
+          </Grid>
         </div>
       </div>
     </div>

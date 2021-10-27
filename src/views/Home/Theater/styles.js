@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   theater: {
     display: "flex",
     maxWidth: 940,
@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     margin: "auto",
     border: "1px solid #ebebec",
     borderRadius: 4,
+  
   },
   taps: {
     // dường line phần chia khi horizontal
@@ -33,5 +34,5 @@ const useStyles = makeStyles({
       opacity: 1,
     },
   },
-});
+}));
 export default useStyles;

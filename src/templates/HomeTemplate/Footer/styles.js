@@ -3,13 +3,15 @@ import { makeStyles } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 940,
-        margin: "auto"
+        margin: "auto",
+
     },
     footer: {
         backgroundColor: "#222",
         paddingTop: "20px",
         paddingBottom: "20px",
-        color: "#949494"
+        color: "#949494",
+
     },
     title: {
         padding: 0,
@@ -17,6 +19,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: "80%",
         color: "#fff"
 
+    },
+    displayInDesktop: {
+        display: props => props.isDesktop ? "block" : "none"
     },
     text: {
         width: "45%",
@@ -50,7 +55,8 @@ const useStyles = makeStyles(theme => ({
 
     },
     hrFooter: {
-        borderTop: "1px solid #4a4a4a"
+        borderTop: "1px solid #4a4a4a",
+
     },
     logoCompany: {
         width: 80,
@@ -67,11 +73,17 @@ const useStyles = makeStyles(theme => ({
     },
     titleDown: {
         padding: 0,
-        marginBottom:0,
+        marginBottom: 0,
         fontSize: "80%",
         color: "#fff"
 
     },
+    footer__down: {
+        [theme.breakpoints.down(376)]: {
+            padding: "15px 30px"
+        }
+
+    }
 
 }))
 

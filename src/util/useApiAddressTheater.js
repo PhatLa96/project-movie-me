@@ -15,7 +15,6 @@ export default function UseAddressTheater(maLichChieu) {
                 });
                 setData({
                     diaChi: response.data?.content.thongTinPhim?.diaChi, // tách ra địa chỉ
-
                 });
             } catch (error) { // vào đây khi có lỗi get api hoặc khi cancel thành công
                 if (Axios.isCancel(error)) { // cancel request thành công

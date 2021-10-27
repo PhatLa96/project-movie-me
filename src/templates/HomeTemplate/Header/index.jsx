@@ -26,7 +26,7 @@ import { GetTheaterList } from "../../../redux/actions/ManagerTheaterAction/Thea
 import { LazyType } from "../../../redux/types/ManagerLazyType";
 import { userType } from "../../../redux/types/ManagerUserType";
 import { useTheme } from "@material-ui/core/styles";
-// import { theme } from "../../../util/settings/config";
+import useStyles from "./style"
 import UseHandleVibrateLazy from "../../../util/UseHandleVibrateLazy";
 const headMenu = [
   { nameLink: "Lịch chiếu", id: "lichchieu" },
@@ -34,149 +34,8 @@ const headMenu = [
   { nameLink: "Tin tức", id: "tintuc" },
   { nameLink: "Ứng dụng", id: "ungdung" },
 ];
-const drawerWidth = 240;
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
-  spaceBetween: {
-    justifyContent: "space-between",
-  },
-  appBar: {
-    backgroundColor: "rgba(255,255,255,.95)",
-  },
-  logo: {
-    height: 50,
-    width: 50,
-    cursor: "pointer",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  link: {
-    cursor: "pointer",
-    paddingInline: "10px",
-    "&:hover": {
-      color: "#fb4226",
-      transition: "all .2s",
-    },
-  },
-  menuLink: {
-    position: "absolute",
-    color: "#000",
 
-    left: "38%",
-  },
-  list: {
-    display: "flex",
-    color: "#9b9b9b",
-  },
-  listItem: {
-    minWidth: "fit-content",
-  },
-  divide: {
-    fontWeight: 500,
-    "&::after": {
-      content: "''",
-      position: "absolute",
-      right: "0",
-      height: "30px",
-      top: "50%",
-      transform: "translateY(-50%)",
-      borderRight: "1px solid #e9e9e9",
-    },
-  },
-  user: {
-    display: (props) => (props.isDesktop ? "block" : "none"),
-  },
-  auth: {
-    display: "flex",
-    color: (props) => (props.isDesktop ? "#9b9b9b" : "#000"),
-  },
-  linkTobody: {
-    display: (props) => (props.isDesktop ? "block" : "none"),
-    color: "#000",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    [theme.breakpoints.down(899)]: {
-      left: "42%",
-    },
-    [theme.breakpoints.down(773)]: {
-      left: "39%",
-    },
-  },
-  itemAuth: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    minWidth: "fit-content",
-    "&:hover": {
-      backgroundColor: "transparent",
-      "& .MuiTypography-root": {
-        color: "#fb4226",
-      },
-      "& .MuiListItemIcon-root": {
-        color: "#fb4226",
-      },
-    },
-    "& .MuiTypography-root": {
-      transition: "all .2s",
-    },
-    "& .MuiListItemIcon-root": {
-      transition: "all .2s",
-    },
-  },
-  hover: {
-    "&:hover": {
-      color: "#fb4226",
-      backgroundColor: "rgba(0, 0, 0, 0.04)",
-    },
-  },
 
-  icon: {
-    minWidth: 41,
-    color: "#9b9b9b",
-  },
-  avatar: {
-    width: theme.spacing(4),
-    height: theme.spacing(4),
-  },
-  menuIcon: {
-    display: (props) =>
-      props.isDesktop || props.openDrawer ? "none" : "block",
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: "flex",
-    alignItems: "center",
-
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: "space-between",
-  },
-  itemMenu: {
-    display: "block",
-    padding: 20,
-    fontWeight: 500,
-    width: "100%",
-    cursor: "pointer",
-    fontSize: 18,
-    "&:hover": {
-      color: "#fb4226",
-      backgroundColor: "rgba(0, 0, 0, 0.04)",
-    },
-  },
-}));
 
 export default function Header() {
   const { Users } = useSelector((state) => state.ManagerUserReducer);

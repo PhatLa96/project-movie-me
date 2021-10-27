@@ -3,17 +3,21 @@ import React from "react";
 import useStyles from "./styles";
 import _ from "lodash";
 import { useSelector } from "react-redux";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 function Footer() {
   const { arrTheater } = useSelector((state) => state.TheaterReducer);
   const arrSystemTheater = _.map(arrTheater, (item) =>
     _.pick(item, ["maHeThongRap", "tenHeThongRap", "logo"])
   );
   console.log(arrSystemTheater);
-  const classes = useStyles();
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const classes = useStyles({ isDesktop });
   return (
     <div className={classes.footer}>
       <div className={classes.root}>
-        <Grid container>
+        <Grid className={classes.displayInDesktop} container>
           <Grid item md={4}>
             <p className={classes.title}>TIX</p>
             <div className="d-flex">

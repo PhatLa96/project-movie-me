@@ -3,11 +3,20 @@ const useStyles = makeStyles((theme) => ({
   carousel: {
     position: 'relative',
     zIndex: 1,
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: 57
+    }
   },
   itemSlider: {
     position: 'relative'
   },
-  img: { height: "90vh", width: "100%" },
+  img: {
+    height: "90vh",
+    width: "100%",
+    [theme.breakpoints.down("sm")]: {
+      height: "100%",
+    }
+  },
   backgroundLinear: {
     position: "absolute",
     width: "100%",

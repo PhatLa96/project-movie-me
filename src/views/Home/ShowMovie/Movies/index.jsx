@@ -31,11 +31,20 @@ function Movie({ movieData, value }) {
   const classes = useStyles();
 
   const settings = {
-
     slidesToShow: 1,
     speed: 500,
     rows: 2,
     slidesPerRow: 4,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          slidesPerRow: 2,
+        },
+      },
+    ],
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };

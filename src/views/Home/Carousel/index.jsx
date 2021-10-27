@@ -10,10 +10,13 @@ import "./carousel.css";
 import SearchBarCarousel from "./SearchBarCarousel";
 import createAction from "../../../redux/actions";
 import { LazyType } from "../../../redux/types/ManagerLazyType";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
 function Carousel({ arrMovie }) {
-  const classes = useStyles();
   const { arrBanner } = useSelector((state) => state.CarouselReducer);
-  console.log(arrBanner);
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const classes = useStyles({ isDesktop });
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetCarouselAction);

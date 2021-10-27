@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItem: 'center',
     marginBottom: 30,
-    paddingTop:80
+    paddingTop: 80,
+
   },
   tabBar: {
     alignItem: 'center',

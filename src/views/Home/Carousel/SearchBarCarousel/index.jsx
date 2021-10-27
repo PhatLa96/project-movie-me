@@ -11,10 +11,14 @@ import useStyles from "./styles";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { GetDetailShowTime } from "../../../../redux/actions/ManagerTheaterAction/DetailAction";
-
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import formatDate from "../../../../util/fomatDate";
 import { useHistory } from "react-router";
+
 function SearchBarCarousel() {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const { arrMovie } = useSelector((state) => state.MovieListReducer);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -43,6 +47,7 @@ function SearchBarCarousel() {
 
   const classes = useStyles({
     openPhim: data.open.movie || data.setMovie?.maPhim,
+    isDesktop,
   });
   useEffect(() => {
     if (!data.open.movie) {
@@ -105,39 +110,8 @@ function SearchBarCarousel() {
 
       open: { ...data.open, theater: true },
     }));
-    // ManagerTheater.GetMovieDetailShowTime(movie.maPhim)
-    //   .then((result) => {
-    //     // setData((data) => ({ ...data, startRequest: false }));
-    //     console.log("result",result.data.content)
-    //     const arrCumRapData = result.data.content.heThongRapChieu.reduce(
-    //       (colect, item) => {
-    //         return [...colect, ...item.cumRapChieu];
-    //       },
-    //       []
-    //     );
-    //     console.log("arrCumRapData", arrCumRapData);
-    //     const renderArrCumRapData = arrCumRapData.map((item) => item.tenCumRap);
-    //     setData((data) => ({
-    //       ...data,
-    //       arrCumRapData,
-    //       renderArrCumRapData,
-    //     }));
-    //   })
-    //   .catch(function (error) {
-    //     if (error.response) {
-    //       setData((data) => ({ ...data, errorCallApi: error.response.data }));
-    //     } else if (error.request) {
-    //       setData((data) => ({ ...data, errorCallApi: error.message }));
-    //     }
-    //   });
 
     dispatch(GetDetailShowTime(movie.maPhim));
-
-    // const arrCumRapData = arrDetail?.heThongRapChieu?.reduce((colect, item) => {
-    //   return [...colect, ...item.cumRapChieu];
-    // }, []);
-    // console.log("arrCumRapData", arrCumRapData);
-    // const renderArrCumRapData = arrCumRapData?.map((item) => item.tenCumRap);
   };
   const handleSelectTheater = (event) => {
     const indexSelect = arrCumRapData?.findIndex(

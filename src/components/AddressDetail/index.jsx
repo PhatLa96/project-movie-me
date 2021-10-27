@@ -4,13 +4,7 @@ import { getDatVeAction } from "../../redux/actions/ManagerDatVeAction/DatVeActi
 import UseAddressTheater from "../../util/useApiAddressTheater";
 
 function AddressDetail({ maLichChieu }) {
-  const { arrDatVe } = useSelector((state) => state.DatVeReducer);
 
-//   console.log(arrDatVe);
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     dispatch(getDatVeAction(maLichChieu));
-//   }, []);
     const { diaChi } = UseAddressTheater(maLichChieu);
 
   const style = {

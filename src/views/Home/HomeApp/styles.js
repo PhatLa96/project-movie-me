@@ -1,32 +1,34 @@
-import { makeStyles } from "@material-ui/core"
+import { makeStyles } from "@material-ui/core";
 
-const useStyle = makeStyles(theme => ({
-
+const useStyle = makeStyles((theme) => ({
   mobileApp: {
     backgroundImage: 'url("/img/mobile/backapp.jpg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     height: "fit-content",
-    color: 'white',
+    color: "white",
     [theme.breakpoints.down("lg")]: {
       height: "auto",
+    },
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "375px",
     },
   },
 
   mainMaxWidth: {
     maxWidth: 940,
-    margin: 'auto',
+    margin: "auto",
     paddingTop: 60,
     paddingBottom: 60,
     height: "fit-content",
   },
   mobileApp__left: {
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    '& a': {
-      color: 'white',
+    height: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "& a": {
+      color: "white",
     },
   },
   textLeft: {
@@ -44,7 +46,7 @@ const useStyle = makeStyles(theme => ({
     display: "block",
     height: "auto",
   },
-  'slick-mobile': {
+  "slick-mobile": {
     position: "absolute !important",
     padding: "1.5% 29.1% 1.3% 29.3%",
     top: "0",
@@ -56,24 +58,24 @@ const useStyle = makeStyles(theme => ({
       backgroundColor: "#fff",
       width: "100%",
       height: "100%",
-      '& img': {
-        width: '100%',
-        height: '100%',
-        display: 'block',
+      "& img": {
+        width: "100%",
+        height: "100%",
+        display: "block",
       },
     },
   },
-  button:{
-      backgroundColor:"#fb4226",
-      padding:"10px 20px",
-      color:"#fff",
-      border:"none",
-      fontWeight:700,
-      borderRadius:"4px",
-      textDecoration:"none",
-      "&:hover":{
-        textDecoration:"none"
-      }
-  }
-}))
-export default useStyle
+  button: {
+    backgroundColor: "#fb4226",
+    padding: "10px 20px",
+    color: "#fff",
+    border: "none",
+    fontWeight: 700,
+    borderRadius: "4px",
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
+}));
+export default useStyle;

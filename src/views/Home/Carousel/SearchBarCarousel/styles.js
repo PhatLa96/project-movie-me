@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     borderRadius: 5,
     boxShadow: '0 0 10px rgb(0 0 0 / 30%)',
-
+    [theme.breakpoints.down(376)]: {
+      display: props => props.isDesktop ? "block" : "none"
+    }
   },
   itemFirst: {
     padding: '1%',
@@ -44,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
       '& > input': {
         padding: "18px 0px !important",
         paddingLeft: "20px !important",
-      
+
         fontSize: 14,
       },
       '&:before': {
