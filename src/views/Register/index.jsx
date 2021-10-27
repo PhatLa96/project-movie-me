@@ -1,163 +1,179 @@
-import {
-  Avatar,
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-} from "@material-ui/core";
-import React from "react";
-import useStyles from "./styles";
+import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import * as yup from "yup";
 import { RegisterAction } from "../../redux/actions/ManagerUserAction";
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const schema = yup.object().shape({
-  taiKhoan: yup.string().required("User is required"),
-  matKhau: yup.string().required("Password is required"),
-  hoTen: yup.string().required("Họ và tên is required"),
+  taiKhoan: yup.string().required("*Tài khoản không được bỏ trống !"),
+  matKhau: yup.string().required("*Mật khẩu không được bỏ trống !"),
+  email: yup
+    .string()
+    .required("*Email không được bỏ trống !")
+    .email("* Email không hợp lệ "),
   soDt: yup
     .string()
-    .required("Phone is required")
-    .matches(/^[0-9]+$/g, "Phone must be number!!!!"),
-  email: yup.string().required("Email is required").email("Email is invalid"),
+    .required("*Số điện thoại không được bỏ trống !")
+    .matches(phoneRegExp, "Số điện thoại không hợp lệ!"),
+  hoTen: yup.string().required("*Tên không được bỏ trống !"),
 });
-function Register() {
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+
+    paddingInline: "20px",
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  text: {
+    color: "#fff",
+  },
+}));
+
+const Register = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isDirty, isSubmitting, touchedFields, submitCount },
-  } = useForm({ resolver: yupResolver(schema) });
-  const onLoginSubmit = (data) => {
-    console.log(data);
-    dispatch(RegisterAction(data));
+  const history = useHistory();
+
+  // const { values, handleChange, errors, touched, handleBlur, isValid } =
+  //   useFormik({
+  //     initialValues: {
+  //       taiKhoan: "",
+  //       matKhau: "",
+  //       email: "",
+  //       soDt: "",
+  //       maNhom: "GP05",
+  //       hoTen: "",
+  //     },
+  //     validationSchema: schema,
+  //     // validateOnMount: true,
+  //   });
+  // console.log(values);
+
+  const handleSubmit = (user) => {
+    // event.preventDefault();
+    // if (!isValid) return;
+
+    dispatch(RegisterAction(user));
   };
+  // useEffect(() => {
+  //   if (SignUpUser) {
+  //     closeModal();
+  //     // console.log(closeModal());
+  //   }
+  // }, [SignUpUser]);
   return (
-    <div>
-      <Container maxWidth="sm" component="main">
+    <div className="text-light" style={{ paddingTop:"15px" }}>
+      <Container style={{ paddingTop: 10 }} component="main" maxWidth="sm">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Đăng ký
+          <img
+            src="	https://tix.vn/app/assets/img/login/group@2x.png"
+            alt="logo"
+            style={{
+              width: "200px",
+              marginBottom: "10px",
+              cursor: "pointer",
+              display: "block",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          />
+          <Typography style={{ paddingBottom: 15 }} component="h7" variant="h8">
+            Đăng Ký để được nhiều ưu đãi, mua vé và bảo mật thông tin!
           </Typography>
-          <form
-            onSubmit={handleSubmit(onLoginSubmit)}
-            className={classes.form}
-            noValidate
+          <Formik
+            initialValues={{
+              taiKhoan: "",
+              matKhau: "",
+              email: "",
+              soDt: "",
+              maNhom: "GP09",
+              maLoaiNguoiDung: "KhachHang", // điền QuanTri backend cũng áp dụng KhachHang
+              hoTen: "",
+            }}
+            validationSchema={schema} // validationSchdema:  thu vien yup nhập sai ko submit được
+            onSubmit={handleSubmit}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  classes={{ root: classes.textField }}
-                  variant="outlined"
-                  autoFocus
-                  required
-                  fullWidth
-                  id="taiKhoan"
-                  label="Tài khoản"
-                  autoFocus
-                  {...register("taiKhoan")}
-                />
-                {errors.taiKhoan && (
-                  <p className={classes.textError}>{errors.taiKhoan.message}</p>
-                )}
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  classes={{ root: classes.textField }}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="matKhau"
-                  label="Mật khẩu"
-                  type="password"
-                  id="matKhau"
-                  autoComplete="current-password"
-                  {...register("matKhau")}
-                />
-                {errors.matKhau && (
-                  <p className={classes.textError}>{errors.matKhau?.message}</p>
-                )}
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  classes={{ root: classes.textField }}
-                  name="soDt"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="soDt"
-                  label="Số điện thoại"
-                  {...register("soDt")}
-                />
-                {errors.soDt && (
-                  <p className={classes.textError}>{errors.soDt?.message}</p>
-                )}
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  classes={{ root: classes.textField }}
-                  name="hoTen"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="hoTen"
-                  label="Họ và tên"
-                  {...register("hoTen")}
-                />
-                {errors.hoTen && (
-                  <p className={classes.textError}>{errors.hoTen?.message}</p>
-                )}
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  classes={{ root: classes.textField }}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
-                  {...register("email")}
-                />
-                {errors.email && (
-                  <p className={classes.textError}>{errors.email?.message}</p>
-                )}
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              ĐĂNG KÝ
-            </Button>
-            {/* <NavLink to="/">
-              <Button variant="contained" fullWidth color="primary">
-                Back to home
-              </Button>
-            </NavLink>
-            <NavLink to="/login">
-              <Button className="mt-3" fullWidth color="primary">
-                Do you already have an account? Login now
-              </Button>
-            </NavLink> */}
-          </form>
+            {(formikProps) => (
+              <Form className="col-sm-12  text-white">
+                <div className="form-group">
+                  <label>Tài khoản&nbsp;</label>
+                  <ErrorMessage
+                    name="taiKhoan"
+                    render={(msg) => <span className="text-danger">{msg}</span>}
+                  />
+                  <Field name="taiKhoan" type="text" className="form-control" />
+                </div>
+                <div className="form-group">
+                  <label>Mật khẩu&nbsp;</label>
+                  <ErrorMessage
+                    name="matKhau"
+                    render={(msg) => <span className="text-danger">{msg}</span>}
+                  />
+                  <Field
+                    name="matKhau"
+                    type="password"
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Họ và tên&nbsp;</label>
+                  <ErrorMessage
+                    name="hoTen"
+                    render={(msg) => <span className="text-danger">{msg}</span>}
+                  />
+                  <Field name="hoTen" type="text" className="form-control" />
+                </div>
+
+                <div className="form-group">
+                  <label>Email&nbsp;</label>
+                  <ErrorMessage
+                    name="email"
+                    render={(msg) => <span className="text-danger">{msg}</span>}
+                  />
+                  <Field name="email" type="email" className="form-control" />
+                </div>
+                <div className="form-group">
+                  <label>Số điện thoại&nbsp;</label>
+                  <ErrorMessage
+                    name="soDt"
+                    render={(msg) => <span className="text-danger">{msg}</span>}
+                  />
+                  <Field name="soDt" type="text" className="form-control" />
+                </div>
+
+                <div className="text-center p-2">
+                  <button type="submit" className="btn btn-success">
+                    Đăng Ký
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
+        <Box mt={5}></Box>
       </Container>
     </div>
   );
-}
-
+};
 export default Register;

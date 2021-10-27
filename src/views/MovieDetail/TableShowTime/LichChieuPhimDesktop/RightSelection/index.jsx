@@ -9,6 +9,7 @@ import useStyles from "./styles";
 function RightSelection({ cumRapChieu }) {
   const classes = useStyles();
   const [indexSelected, setindexSelected] = useState(0);
+  console.log("cumRapChieu", cumRapChieu);
   const arrayAllLichChieuPhim = cumRapChieu.reduce((colect, item) => {
     return [
       // lọc ra tất cả lịch chiếu phim của từng hệ thống rạp từng cụm rạp
@@ -19,13 +20,13 @@ function RightSelection({ cumRapChieu }) {
       })),
     ];
   }, []);
-  console.log(arrayAllLichChieuPhim);
+  console.log("arrayAllLichChieuPhim", arrayAllLichChieuPhim);
   const arrayAllDay = arrayAllLichChieuPhim.map((item) => {
     return item.ngayChieuGioChieu.slice(0, 10); // tạo mảng mới với item là "2020-12-17" cắt ra từ 2020-12-17T10:10:00
   });
-  console.log(arrayAllDay);
+  console.log("arrayAllDay", arrayAllDay);
   const mangNgayKhongTrungLap = [...new Set(arrayAllDay)];
-  console.log("bbbb", mangNgayKhongTrungLap);
+
   const allArrayCumRapChieuFilterByDay = mangNgayKhongTrungLap.map((day) => {
     // tạo mảng chứa lichchieuphim filter theo ngày
     const arrayLichChieuPhimFilterByDay = arrayAllLichChieuPhim.filter(
@@ -36,7 +37,7 @@ function RightSelection({ cumRapChieu }) {
         return false;
       }
     );
-
+    console.log("arrayLichChieuPhimFilterByDay", arrayLichChieuPhimFilterByDay);
     // loại bỏ cumRapChieu trùng lặp
     const arrayCumRapChieuRemoveDup = arrayLichChieuPhimFilterByDay?.filter(
       (itemIncrease, indexIncrease, arr) => {
@@ -44,9 +45,10 @@ function RightSelection({ cumRapChieu }) {
           (t) => t.tenCumRap === itemIncrease.tenCumRap
         );
         return indexIncrease === indexFirstFounded;
+     
       }
     );
-
+    console.log("arrayCumRapChieuRemoveDup", arrayCumRapChieuRemoveDup);
     // tạo mảng cumRapChieu
     const arrayCumRapChieu = arrayCumRapChieuRemoveDup.map((cumRapChieu) => {
       const tenCumRap = cumRapChieu.tenCumRap;
@@ -60,7 +62,7 @@ function RightSelection({ cumRapChieu }) {
 
     return arrayCumRapChieu;
   });
-  console.log(allArrayCumRapChieuFilterByDay);
+  console.log("allArrayCumRapChieuFilterByDay", allArrayCumRapChieuFilterByDay);
   const handleSelectDay = (index) => {
     setindexSelected(index);
   };

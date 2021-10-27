@@ -36,8 +36,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-
-
 export default function News() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -46,7 +44,7 @@ export default function News() {
     setValue(newValue);
   };
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="tintuc">
       <div className={classes.content}>
         <AppBar className={classes.appbar} position="static">
           <Tabs

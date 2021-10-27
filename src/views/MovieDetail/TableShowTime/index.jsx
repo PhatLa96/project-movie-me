@@ -53,7 +53,7 @@ function TableShowTime({ onClickBtnMuaVe, arrDetail }) {
   //   createdAt: "",
   //   userLikeThisComment: [],
   // })
-  console.log("123", commentList);
+
   const dispatch = useDispatch();
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -93,9 +93,9 @@ function TableShowTime({ onClickBtnMuaVe, arrDetail }) {
       idScrollTo,
     }));
   };
-  const handleClose = () => {
-    setOpenComment(false);
-  };
+  // const handleClose = () => {
+  //   setOpenComment(false);
+  // };
   // khi nhấn btnMuaVe onClickBtnMuaVe là 1 số bất kỳ rơi vào if sẽ chạy hàm Scroll
   useEffect(() => {
     window.scrollTo(0, 0);

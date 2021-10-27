@@ -2,9 +2,7 @@ import { GROUPID } from "../util/settings/config";
 import { baseService } from "./baseService";
 
 export class ManagerMovieService extends baseService {
-    constructor() {
-        super()
-    }
+ 
     GetListBanner = () => {
         return this.get(`/api/QuanLyPhim/LayDanhSachBanner`)
     }

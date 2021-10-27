@@ -10,6 +10,7 @@ function LichChieuPhimDesktop({ arrDetail }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  console.log("arrDetail", arrDetail);
   return (
     <div className={classes.root}>
       <Tabs

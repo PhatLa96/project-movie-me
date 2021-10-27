@@ -29,12 +29,9 @@ export function PrevArrow(props) {
 }
 function Movie({ movieData, value }) {
   const classes = useStyles();
-  console.log(movieData);
-  console.log(value);
-  const settings = {
-    className: "center",
 
-    centerPadding: "60px",
+  const settings = {
+
     slidesToShow: 1,
     speed: 500,
     rows: 2,

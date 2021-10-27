@@ -2,9 +2,7 @@ import { GROUPID } from "../util/settings/config";
 import { baseService } from "./baseService";
 
 export class ManagerTheaterService extends baseService {
-    constructor() {
-        super()
-    }
+
 
     GetListTheater = () => {
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`)

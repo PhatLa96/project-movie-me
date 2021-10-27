@@ -5,12 +5,27 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from "./redux/configStore"
 import { Provider } from 'react-redux';
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+//Cấu hình realtime (websocket với signalR)
+import * as signalR from '@aspnet/signalr'
+import { DOMAIN } from './util/settings/config';
+
+
+//Đoạn code để kết nối đến server lắng nghe sự kiện từ server
+export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub`).configureLogging
+  (signalR.LogLevel.Information).build();
+
+
+connection.start().then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+    ,
+    document.getElementById('root')
+  );
+}).catch(errors => {
+  console.log(errors);
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

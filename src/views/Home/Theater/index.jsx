@@ -11,7 +11,7 @@ function Theater() {
   const classes = useStyles({ underLine });
 
   return (
-    <div>
+    <div id="cumrap">
       <Seperate />
       <div className={classes.theater}>
         <Tabs

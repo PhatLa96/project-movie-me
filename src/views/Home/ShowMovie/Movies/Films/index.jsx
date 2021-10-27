@@ -9,7 +9,7 @@ function Film({ film, comingMovie }) {
   const classes = useStyles({ bg: film.hinhAnh, comingMovie });
   const history = useHistory();
   const { thoiLuong } = useApiThoiLuongDanhGia(film.maPhim);
-  console.log(film);
+
 
   return (
     <div

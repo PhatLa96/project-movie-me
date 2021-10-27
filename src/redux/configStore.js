@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux"
 import thunk from "redux-thunk"
 import CommentReducer from "./reducers/ManagerCommentReducer/ManagerCommentReducer";
 import DatVeReducer from "./reducers/ManagerDatVeReducer/DatVeReducer";
+import LazyReducer from "./reducers/ManagerLazyReducer/LazyReducer";
 import CarouselReducer from "./reducers/ManagerMovieReducer/CarouselReducer";
 import MovieListReducer from "./reducers/ManagerMovieReducer/MovieListReducer";
 import DetailReducer from "./reducers/ManagerTheaterReducer/MovieDetailRedecer";
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     DatVeReducer,
     CommentReducer,
     ManagerUserReducer,
+    LazyReducer
 })
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 export default store

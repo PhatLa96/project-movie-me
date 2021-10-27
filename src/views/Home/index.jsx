@@ -13,22 +13,20 @@ import Theater from "./Theater";
 function Home() {
   const dispatch = useDispatch();
   const { arrMovie } = useSelector((state) => state.MovieListReducer);
-  const { arrTheater } = useSelector((state) => state.TheaterReducer);
 
-  console.log(arrMovie);
-  console.log(arrTheater);
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(GetMovieListAction);
     dispatch(GetTheaterList);
   }, []);
+
   return (
     <div>
-      <Carousel />
+      <Carousel arrMovie={arrMovie} />
       <ShowMovie />
       <Theater />
       <News />
       <HomeApp />
-    
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { dataFakeImgTheater, returnRandomItem } from "../../util/settings/theaterData"
 function FakeImgTheater({ nameTheater, imgStyled }) {
-    console.log(dataFakeImgTheater)
+
     let imgTheater
     // ứng với mỗi nameTheater chỉ xuất 1 hình ảnh duy nhất
     // dataFakeImgTheater: [{nameTheater: "", img: "/img/cumRap/lotte-cinema-thu-duc-15383864347748.jpg"},]

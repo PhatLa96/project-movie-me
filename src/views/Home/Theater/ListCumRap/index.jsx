@@ -11,7 +11,7 @@ function ListCumRap({ lstCumRap }) {
   const handleChangeCumRap = (e) => {
     setValueCumRap(Number(e.currentTarget.getAttribute("index")));
   };
-  console.log(lstCumRap);
+
   return (
     <div className={classes.flexCumRap}>
       <div className={classes.listCumRap}>

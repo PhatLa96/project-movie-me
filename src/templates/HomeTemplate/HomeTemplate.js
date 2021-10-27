@@ -1,10 +1,14 @@
-import { Fragment } from "react"
+import { Fragment, useEffect } from "react"
 import { Route } from "react-router-dom"
 import ModalTrailer from "../../components/ModalTrailer"
 import Footer from "./Footer"
 import Header from "./Header"
 
-export const HomeTemplate = (props) => {
+const HomeTemplate = (props) => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
+
     const { Component, ...restRoute } = props
     return <Route {...restRoute} render={(propsRoute) => {
         return <Fragment>
@@ -15,3 +19,5 @@ export const HomeTemplate = (props) => {
         </Fragment>
     }} />
 }
+
+export default HomeTemplate

@@ -7,13 +7,17 @@ import useStyles from "./styles";
 import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded";
 import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded";
 import "./carousel.css";
-function Carousel(props) {
+import SearchBarCarousel from "./SearchBarCarousel";
+import createAction from "../../../redux/actions";
+import { LazyType } from "../../../redux/types/ManagerLazyType";
+function Carousel({ arrMovie }) {
   const classes = useStyles();
   const { arrBanner } = useSelector((state) => state.CarouselReducer);
   console.log(arrBanner);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GetCarouselAction);
+    dispatch(createAction(LazyType.LOADING_BACKTO_HOME_COMPLETED));
   }, []);
   function NextArrow(props) {
     const { onClick } = props;
@@ -57,6 +61,7 @@ function Carousel(props) {
           );
         })}
       </Slider>
+      <SearchBarCarousel arrMovie={arrMovie} />
     </div>
   );
 }

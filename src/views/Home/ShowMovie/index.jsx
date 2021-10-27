@@ -13,7 +13,7 @@ function ShowMovie() {
 
   const DATE_BEGIN_SAPCHIEU = "2020-12-02";
   const DATE_END_SAPCHIEU = new Date().toISOString()?.slice(0, 10);
-  console.log(DATE_END_SAPCHIEU);
+
   const [value, setValue] = useState({ value: 0, fade: true, active: 0 });
   const classes = useStyles({
     value: value.value,
@@ -41,7 +41,7 @@ function ShowMovie() {
       return false;
     });
   };
-  console.log(arrData);
+
   useEffect(() => {
     let dailyMovie = filterDay(
       arrMovie,
@@ -63,12 +63,10 @@ function ShowMovie() {
       // sau thời gian 100ms setValue thay đổi giá trị của value thành 1 hoặc 0 để render dailyMovie hoặc comingMovie fade thành true
       setValue((value) => ({ ...value, value: newValue, fade: true })); // thay đổi value thành 1(hiện comingMovie) fade thành true opacity 1 hiện lên
     }, 100);
-    console.log(timeout.current);
-    console.log(newValue);
   };
 
   return (
-    <div>
+    <div id="lichchieu">
       <AppBar className={classes.appBar} position="static">
         <Tabs
           classes={{

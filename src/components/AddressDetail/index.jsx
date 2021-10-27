@@ -12,12 +12,12 @@ function AddressDetail({ maLichChieu }) {
 //     dispatch(getDatVeAction(maLichChieu));
 //   }, []);
     const { diaChi } = UseAddressTheater(maLichChieu);
-    console.log(diaChi);
+
   const style = {
     fontSize: 14,
     color: "#9b9b9b",
   };
-  console.log(maLichChieu);
+
   return <div style={style}>{diaChi}</div>;
 }
 

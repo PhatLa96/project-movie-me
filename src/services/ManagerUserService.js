@@ -9,7 +9,11 @@ export class ManagerUserService extends baseService {
     PostRegister = (values) => {
         return this.post(`/api/QuanLyNguoiDung/DangKy`, values)
     }
-
-
+    LoginUser = (values) => {
+        return this.post(`/api/QuanLyNguoiDung/DangNhap`, values)
+    }
+    GetInfoUser = () => {
+        return this.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`)
+    }
 }
 export const ManagerUser = new ManagerUserService()

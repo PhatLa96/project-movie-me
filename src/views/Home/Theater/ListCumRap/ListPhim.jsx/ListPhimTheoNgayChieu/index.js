@@ -11,7 +11,7 @@ function ListPhimTheoNgayChieu({ lstLichChieuTheoPhim }) {
     })
 
     const mangNgayKhongTrungLap = [...new Set(mangChiChuaNgay)] // SET() loại bỏ các giá trị bị trùng lặp
-    console.log("aaaa", mangNgayKhongTrungLap)
+
     const filterByDay = (date) => {
         const gioChieuRender = lstLichChieuTheoPhim.filter((item) => {
             if (item.ngayChieuGioChieu.slice(0, 10) === date) {
