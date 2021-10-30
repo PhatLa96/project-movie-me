@@ -26,16 +26,14 @@ import { GetTheaterList } from "../../../redux/actions/ManagerTheaterAction/Thea
 import { LazyType } from "../../../redux/types/ManagerLazyType";
 import { userType } from "../../../redux/types/ManagerUserType";
 import { useTheme } from "@material-ui/core/styles";
-import useStyles from "./style"
+import useStyles from "./style";
 import UseHandleVibrateLazy from "../../../util/UseHandleVibrateLazy";
 const headMenu = [
-  { nameLink: "Lịch chiếu", id: "lichchieu" },
+  { nameLink: "Phat", id: "lichchieu" },
   { nameLink: "Cụm rạp", id: "cumrap" },
   { nameLink: "Tin tức", id: "tintuc" },
   { nameLink: "Ứng dụng", id: "ungdung" },
 ];
-
-
 
 export default function Header() {
   const { Users } = useSelector((state) => state.ManagerUserReducer);
