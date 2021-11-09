@@ -50,7 +50,7 @@ const DatVeReducer = (state = initialState, { type, payload }) => {
             return { ...state, isReadyPayment: payload.isReadyPayment, activeStep: payload.activeStep }
         }
         case DatVeType.RESET_DATA_BOOKTICKET: {
-            return { ...state, arrDatVe: {}, danhSachVe: [], isSelectedSeat: false, danhSachGheDangDat: [], sum: 0, activeStep: 0, paymentMethod: "", isReadyPayment: false, bookTicketSuccess: null, timeOut: false, refreshKey: Date.now(), alertOver: false }
+            return { ...state, arrDatVe: {}, danhSachVe: [], isSelectedSeat: false, danhSachGheDangDat: [], sum: 0, activeStep: 0, paymentMethod: "", isReadyPayment: false, bookTicketSuccess: null, timeOut: false, refreshKey: Date.now(), alertOver: false, loadingDatVe: false }
         }
         case DatVeType.TIMEOUT: {
             return { ...state, timeOut: true }

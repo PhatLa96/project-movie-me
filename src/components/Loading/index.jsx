@@ -74,6 +74,7 @@ export default function Loading() {
   const isLoadingBackToHome = useSelector(
     (state) => state.LazyReducer.isLoadingBackToHome
   );
+  const { loadingDatVe } = useSelector((state) => state.DatVeReducer);
   const loadingArrMovie = useSelector(
     (state) => state.MovieListReducer.loadingArrMovie
   );
@@ -81,7 +82,11 @@ export default function Loading() {
     (state) => state.DetailReducer.loadingArrDetail
   );
   const loading =
-    isLazy || isLoadingBackToHome || loadingArrMovie || loadingArrDetail;
+    isLazy ||
+    isLoadingBackToHome ||
+    loadingArrMovie ||
+    loadingArrDetail ||
+    loadingDatVe;
   const loadingPrevious = useRef(false);
   console.log("loadingPrevious", loadingPrevious);
   const theme = useTheme();

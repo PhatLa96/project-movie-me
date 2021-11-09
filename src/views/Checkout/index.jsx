@@ -12,12 +12,16 @@ import Modal from "./Modal";
 import StepperBox from "./StepperBox";
 import _ from "lodash";
 function CheckOut() {
-  const { thongTinPhim, danhSachGhe, refreshKey } = useSelector(
-    (state) => state.DatVeReducer.arrDatVe
-  );
+  const {
+    loadingDatVe,
+    arrDatVe: { thongTinPhim, danhSachGhe },
+  } = useSelector((state) => state.DatVeReducer);
+
+  console.log("loadingDatVe", loadingDatVe);
   const Users = useSelector((state) => state.ManagerUserReducer.Users);
   const dispatch = useDispatch();
   const param = useParams();
+
   useEffect(() => {
     dispatch(getDatVeAction(param.id));
     //Có 1 client nào thực hiện việc đặt vé thành công mình sẽ load lại danh sách phòng vé của lịch chiếu đó
@@ -56,6 +60,9 @@ function CheckOut() {
     //   clearGhe();
     //   window.removeEventListener("beforeunload", clearGhe);
     // };
+    return () => {
+      dispatch(createAction(DatVeType.RESET_DATA_BOOKTICKET));
+    };
   }, []);
   // const clearGhe = function (event) {
   //   connection.invoke("huyDat", Users.taiKhoan, param.id);

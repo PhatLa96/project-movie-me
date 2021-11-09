@@ -23,6 +23,7 @@ export const getDatVeAction = (maLichChieu) => {
 export const thongTinDatVe = (thongTinDatVe) => {
 
     return async (dispatch, getState) => {
+
         try {
             const res = await ManagerDatVe.layThongTinDatVe(thongTinDatVe)
             dispatch(createAction(DatVeType.BOOK_TICKET_SUCCESS, res.data.content))
