@@ -29,7 +29,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useStyles from "./style";
 import UseHandleVibrateLazy from "../../../util/UseHandleVibrateLazy";
 const headMenu = [
-  { nameLink: "Phat", id: "lichchieu" },
+  { nameLink: "Lịch chiếu", id: "lichchieu" },
   { nameLink: "Cụm rạp", id: "cumrap" },
   { nameLink: "Tin tức", id: "tintuc" },
   { nameLink: "Ứng dụng", id: "ungdung" },
